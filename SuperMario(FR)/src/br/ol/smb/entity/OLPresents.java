@@ -74,7 +74,7 @@ public class OLPresents extends Entity {
                 }
                 return;
             case 1:
-                if (Time.getCurrentTime() - waitTime < 4) {
+                if (Time.getCurrentTime() - waitTime < 0/*it was originally 4, but now it's 0 to make the intro faster*/) {
                     return;
                 }
                 fadeEffect.fadeIn();
