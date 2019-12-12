@@ -30,7 +30,7 @@ public class OLPresents extends Entity {
     private Graphics2D osig1;
     private Graphics2D osig2;
 
-    private static final double MAX_AMPLITUDE = 30;
+    private static final double MAX_AMPLITUDE = 0;
     private double amplitude = MAX_AMPLITUDE;
     private double distortionOffset;
     
@@ -109,7 +109,7 @@ public class OLPresents extends Entity {
     }
 
     public void processVerticalDistortion(Graphics2D g, BufferedImage image) {
-        g.setColor(Color.WHITE);
+        g.setColor(Color.MAGENTA);
         g.fillRect(0, 0, image.getWidth(), image.getHeight());
         for (int x = 0; x < image.getWidth(); x++) {
             int dx1 = x;
@@ -125,7 +125,7 @@ public class OLPresents extends Entity {
     }
 
     public void processHorizontalDistortion(Graphics2D g, BufferedImage image) {
-        g.setColor(Color.WHITE);
+        g.setColor(Color.GREEN);
         g.fillRect(0, 0, image.getWidth(), image.getHeight());
         for (int y = 0; y < image.getHeight(); y++) {
             int dx1 = (int) (amplitude * Math.cos(y * 0.1 + distortionOffset));
