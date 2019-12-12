@@ -21,7 +21,7 @@ public class GenAlgo {
 	class Genotype{
 		char[] genes=new char[1000];
 		//array of the four commands to make mario move
-		/////********Tanner********
+		/////********Tanner********yes?
 		//we also need a constructor for genes to make a radom genotype down on line 74
 	}
 	
