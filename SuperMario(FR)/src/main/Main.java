@@ -9,7 +9,8 @@ public class Main {
 
 	public static void main(String[] args) {
 
-		for (int i = 0; i < 5; i++) {
+		int numberOfWindows = 1;
+		for (int i = 0; i < numberOfWindows; i++) {
 			Test test = new Test();
 		}
 	}
