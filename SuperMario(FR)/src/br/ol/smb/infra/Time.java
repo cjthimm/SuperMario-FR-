@@ -1,5 +1,7 @@
 package br.ol.smb.infra;
 
+import GeneticAI.RunAI;
+
 /**
  * Time class.
  * 
@@ -46,7 +48,7 @@ public class Time {
             fixedUpdateCount++;
             fixedFrames++;
         }
-        previousTime = currentTime;
+        previousTime = currentTime;	
     }
     
     static boolean needsFixedUpdate() {

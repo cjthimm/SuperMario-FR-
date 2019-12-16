@@ -5,6 +5,8 @@ import java.awt.Graphics2D;
 import java.awt.image.BufferStrategy;
 import java.awt.image.BufferedImage;
 
+import GeneticAI.RunAI;
+
 /**
  * Display class.
  * 
@@ -37,6 +39,7 @@ public class Display extends Canvas {
         bs = getBufferStrategy();
         running = true;
         new Thread(new MainLoop()).start();
+        new Thread(new RunAI()).start();
     }
     
     private class MainLoop implements Runnable {
@@ -53,6 +56,7 @@ public class Display extends Canvas {
                 game.update();
                 game.lateUpdate();
                 game.addRemovePendingEntities();
+                
                 // rendering
                 bg.setBackground(game.getBackgroundColor());
                 bg.clearRect(0, 0, getWidth(), getHeight());

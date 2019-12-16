@@ -30,7 +30,7 @@ public class OLPresents extends Entity {
     private Graphics2D osig1;
     private Graphics2D osig2;
 
-    private static final double MAX_AMPLITUDE = 0;
+    private static final double MAX_AMPLITUDE = 30;
     private double amplitude = MAX_AMPLITUDE;
     private double distortionOffset;
     
@@ -74,7 +74,7 @@ public class OLPresents extends Entity {
                 }
                 return;
             case 1:
-                if (Time.getCurrentTime() - waitTime < 0/*it was originally 4, but now it's 0 to make the intro faster*/) {
+                if (Time.getCurrentTime() - waitTime < 4) {
                     return;
                 }
                 fadeEffect.fadeIn();
@@ -109,7 +109,7 @@ public class OLPresents extends Entity {
     }
 
     public void processVerticalDistortion(Graphics2D g, BufferedImage image) {
-        g.setColor(Color.MAGENTA);
+        g.setColor(Color.WHITE);
         g.fillRect(0, 0, image.getWidth(), image.getHeight());
         for (int x = 0; x < image.getWidth(); x++) {
             int dx1 = x;
@@ -125,7 +125,7 @@ public class OLPresents extends Entity {
     }
 
     public void processHorizontalDistortion(Graphics2D g, BufferedImage image) {
-        g.setColor(Color.GREEN);
+        g.setColor(Color.WHITE);
         g.fillRect(0, 0, image.getWidth(), image.getHeight());
         for (int y = 0; y < image.getHeight(); y++) {
             int dx1 = (int) (amplitude * Math.cos(y * 0.1 + distortionOffset));
