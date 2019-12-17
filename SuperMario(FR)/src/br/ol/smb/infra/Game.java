@@ -423,6 +423,7 @@ public class Game {
     }
 
     public void tryNextLife() {
+    	//moves to next organism
     	RunAI.NextMario();
         clearScene();
         lives--;

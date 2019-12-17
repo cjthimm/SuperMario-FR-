@@ -111,7 +111,7 @@ public class RunAI implements Runnable {
 //						System.out.println("jump");
 //					}
 //
-//					r.delay(1000);
+//					r.delay(1000);l
 //				}
 //			}
 //
