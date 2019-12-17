@@ -42,6 +42,21 @@ public class GeneticAlgorithm implements Runnable {
 		Organism test = new Organism(new Genotype(genes));
 		return test;
 	}
+	
+	private static Organism[] selectionSort(Organism[] organism, int generationSize) {
+		for(int i = 0; i < generationSize; i++) {
+			int maxIndex = i;
+			for(int j = i + 1; j < generationSize; j++) {
+				if(organism[j].fitness > organism[maxIndex].fitness) {
+					maxIndex = j;
+				}
+			}
+			Organism temp = organism[maxIndex];
+			organism[maxIndex] = organism[i];
+			organism[i] = temp;
+		}
+		return organism;
+	}
 
 	void geneticAlgorithm() {
 		generationCount = 0;
@@ -56,17 +71,7 @@ public class GeneticAlgorithm implements Runnable {
 			for (int o = 0; o < generation.length; o++) {
 				evaluate(generation[o]);
 			}
-
-			for (int i = 0; i < generation.length - 1; i++) {
-				int a = generation[i].fitness;
-				int b = generation[i + 1].fitness;
-				if (a < b) {
-					int temp;
-					temp = a;
-					a = b;
-					b = temp;
-				}
-			}
+			generation = selectionSort(generation, generationSize);
 			// selection
 			Organism[] parents = new Organism[numberOfParents];
 
