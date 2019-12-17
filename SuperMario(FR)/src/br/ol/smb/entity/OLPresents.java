@@ -30,7 +30,7 @@ public class OLPresents extends Entity {
     private Graphics2D osig1;
     private Graphics2D osig2;
 
-    private static final double MAX_AMPLITUDE = 30;
+    private static final double MAX_AMPLITUDE = 0/*30*/;
     private double amplitude = MAX_AMPLITUDE;
     private double distortionOffset;
     
@@ -69,12 +69,12 @@ public class OLPresents extends Entity {
                 amplitude = amplitude * 0.975;
                 if (amplitude < 1) {
                     amplitude = 0;
-                    waitTime = Time.getCurrentTime();
+                    waitTime = 0/*Time.getCurrentTime()*/;
                     ip = 1;
                 }
                 return;
             case 1:
-                if (Time.getCurrentTime() - waitTime < 4) {
+                if (Time.getCurrentTime() - waitTime < 0/*4*/) {
                     return;
                 }
                 fadeEffect.fadeIn();
@@ -83,7 +83,7 @@ public class OLPresents extends Entity {
                 if (!fadeEffect.isFinished()) {
                     return;
                 }
-                waitTime = Time.getCurrentTime();
+                waitTime = 0/*Time.getCurrentTime()*/;
                 ip = 3;
             case 3:
                 if (Time.getCurrentTime() - waitTime < 1) {
@@ -109,7 +109,7 @@ public class OLPresents extends Entity {
     }
 
     public void processVerticalDistortion(Graphics2D g, BufferedImage image) {
-        g.setColor(Color.WHITE);
+        g.setColor(Color.MAGENTA);
         g.fillRect(0, 0, image.getWidth(), image.getHeight());
         for (int x = 0; x < image.getWidth(); x++) {
             int dx1 = x;
@@ -125,7 +125,7 @@ public class OLPresents extends Entity {
     }
 
     public void processHorizontalDistortion(Graphics2D g, BufferedImage image) {
-        g.setColor(Color.WHITE);
+        g.setColor(Color.CYAN);
         g.fillRect(0, 0, image.getWidth(), image.getHeight());
         for (int y = 0; y < image.getHeight(); y++) {
             int dx1 = (int) (amplitude * Math.cos(y * 0.1 + distortionOffset));
