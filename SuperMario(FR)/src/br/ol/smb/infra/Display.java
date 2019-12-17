@@ -5,7 +5,8 @@ import java.awt.Graphics2D;
 import java.awt.image.BufferStrategy;
 import java.awt.image.BufferedImage;
 
-import GeneticAI.RunAI;
+import GeneticAI.GeneticAlgorithm;
+//import GeneticAI.RunAI;
 
 /**
  * Display class.
@@ -39,7 +40,7 @@ public class Display extends Canvas {
         bs = getBufferStrategy();
         running = true;
         new Thread(new MainLoop()).start();
-        new Thread(new RunAI()).start();
+        new Thread(new GeneticAlgorithm()).start();
     }
     
     private class MainLoop implements Runnable {

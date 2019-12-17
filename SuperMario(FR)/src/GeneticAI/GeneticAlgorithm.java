@@ -6,7 +6,7 @@ import java.util.Arrays;
 import java.util.Random;
 import br.ol.smb.infra.Time;
 
-public class GeneticAlgorithm {
+public class GeneticAlgorithm implements Runnable {
 
 	// String answer="levelCleared" ;
 	// casey is finding out how to represent this with x distance
@@ -139,5 +139,11 @@ public class GeneticAlgorithm {
 		}
 
 	}// end GenAlgo class
+
+	@Override
+	public void run() {
+		// TODO Auto-generated method stub
+		
+	}
 
 }
