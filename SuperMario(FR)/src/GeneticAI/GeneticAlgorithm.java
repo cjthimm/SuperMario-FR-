@@ -109,7 +109,7 @@ public class GeneticAlgorithm {
 			}
 
 		}
-	}
+	}// end void geneticAlgorithm
 
 	void evaluate(Organism o) {
 		while (!Time.getDead()) {
@@ -137,6 +137,8 @@ public class GeneticAlgorithm {
 			}
 
 		}
-	}
 
-}// end GenAlgo class
+	}// end GenAlgo class
+
+	
+}
