@@ -122,7 +122,7 @@ public class GeneticAlgorithm implements Runnable {
 			Organism parentToInheritFrom = parents[r.nextInt(numberOfParents)];
 			System.out.println(i);
 			System.out.println(parentToInheritFrom);
-			System.out.println(genes.length);
+			System.out.println(genes.length); 
 			//Exception Occured below
 			genes[i] = parentToInheritFrom.genotype.genes[i];
 		}
