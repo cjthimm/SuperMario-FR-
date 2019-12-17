@@ -88,7 +88,7 @@ public class Entity implements Comparable<Entity> {
 
     public void setDestroyed(boolean destroyed) {
         this.destroyed = destroyed;
-        System.out.println("Entity " + getClass().getName() + " destroyed !");
+        //System.out.println("Entity " + getClass().getName() + " destroyed !");
     }
 
     public Coordinate getCoordinate() {
