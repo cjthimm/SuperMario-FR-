@@ -22,16 +22,16 @@ public class GeneticAlgorithm {
 
 	public static class Genotype {
 		public static Organism CreateGenes() {
-			int values[][] = new int[20][1200];
+			int genes[][] = new int[20][1200];
 			System.out.println("Creating genes");
-			for (int i = 0; i < values.length; i++) {
+			for (int i = 0; i < genes.length; i++) {
 				// do the for in the row according to the column size
 				System.out.println("");
 				System.out.println("Printing the genenome of of the " + i + " organism:");
-				for (int j = 0; j < values[i].length; j++) {
+				for (int j = 0; j < genes[i].length; j++) {
 					// multiple the random by 10 and then cast to in
-					values[i][j] = ((int) (Math.random() * 4));
-					System.out.print(values[i][j]);
+					genes[i][j] = ((int) (Math.random() * 4));
+					System.out.print(genes[i][j]);
 				}
 			}
 		}
