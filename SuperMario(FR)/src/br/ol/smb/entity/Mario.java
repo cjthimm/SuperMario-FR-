@@ -782,6 +782,7 @@ public class Mario extends Actor {
                 reset();
                 break;
             case START_NEXT_LIFE:
+            	marioDead = false;
                 setActorState(ActorState.ALIVE);
                 wx = game.getLastCheckpoint().getCol() * Map.TILE_SIZE;
                 wy = game.getLastCheckpoint().getRow() * Map.TILE_SIZE;

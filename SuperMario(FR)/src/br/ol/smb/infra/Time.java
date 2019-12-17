@@ -66,8 +66,8 @@ public class Time {
             if(Game.getGameState() == GameState.PLAYING&&!Mario.marioIsDead()) {
                 if(fixedFrames%15==0) {
                     nextMove++;
-//<<<<<<< HEAD
-                	System.out.println("*****Index for next move = "+ nextMove+"\nX value = "+Actor.getMinX());// 1/4 SECONDS*******
+                	System.out.println("*****Index for next move = "+ nextMove);
+                	System.out.println("X value = "+Actor.getMinX());// 1/4 SECONDS*******
                     if(Mario.marioIsDead()) {
                     	//startCounter = false;
                 		dead = true;
@@ -76,9 +76,6 @@ public class Time {
                     else{
                     	dead = false;
                     }
-//=======
-                	//System.out.println("Index for next move = "+ nextMove+"\nX value ="+Actor.getMinX());// 1/4 SECONDS*******
-//>>>>>>> branch 'master' of https://github.com/cjthimm/SuperMario-FR-.git
                 }
             }
         }
