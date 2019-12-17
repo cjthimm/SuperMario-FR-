@@ -11,10 +11,10 @@ public class GeneticAlgorithm implements Runnable {
 
 	// String answer="levelCleared" ;
 	// casey is finding out how to represent this with x distance
-	int genotypeSize = 10;
+	int genotypeSize = 1200;
 	int maxGenerations = 1000;
 	int fitnessThreshold = 3043;
-	int generationSize = 100;
+	int generationSize = 10;
 	int numberOfParents = 2;
 	double mutationRate = 0.03;
 
