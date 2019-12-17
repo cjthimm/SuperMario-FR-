@@ -20,9 +20,11 @@ public class GeneticAlgorithm {
 
 	public static class Genotype {
 		int[] genes;
+		
 		Genotype(int[] genes){
 			this.genes = genes;
 		}
+		
 	}
 	public static Organism CreateGenes() {
 		int genes[] = new int[1200];
