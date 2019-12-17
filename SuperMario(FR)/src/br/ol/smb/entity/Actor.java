@@ -19,7 +19,7 @@ public class Actor extends Entity {
 
     public static enum ActorState { APPEARING, ALIVE, DYING, DEAD };
     public static enum LastDirection { LEFT, RIGHT };
-    private ActorState actorState = ActorState.ALIVE;
+    private static ActorState actorState = ActorState.ALIVE;
     protected double restitution = 0;
     protected boolean affectedByGravity = true;
     protected double gravityScale = 1;
@@ -300,7 +300,7 @@ public class Actor extends Entity {
         rigid = false;
     }
     
-    public boolean isDead() {
+    public static boolean isDead() {
         return actorState != ActorState.ALIVE;
     }
 
