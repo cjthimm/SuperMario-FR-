@@ -4,7 +4,6 @@ import java.io.FileNotFoundException;
 import java.io.PrintWriter;
 import java.util.Arrays;
 import java.util.Random;
-import br.ol.smb.infra.Time;
 
 
 public class GeneticAlgorithm implements Runnable {
@@ -12,7 +11,7 @@ public class GeneticAlgorithm implements Runnable {
 	int genotypeSize = 1200;
 	int maxGenerations = 1000;
 	int fitnessThreshold = 3043;
-	int generationSize = 4; //Changed lower temperaroly
+	int generationSize = 8; // Changed lower temporarily
 	int numberOfParents = 2;
 	double mutationRate = 0.03;
 
