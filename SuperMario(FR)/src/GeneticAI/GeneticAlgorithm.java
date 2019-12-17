@@ -21,20 +21,21 @@ public class GeneticAlgorithm {
 	}
 
 	public static class Genotype {
-		public static Organism CreateGenes() {
-			int genes[][] = new int[20][1200];
-			System.out.println("Creating genes");
-			for (int i = 0; i < genes.length; i++) {
-				// do the for in the row according to the column size
-				System.out.println("");
-				System.out.println("Printing the genenome of of the " + i + " organism:");
-				for (int j = 0; j < genes[i].length; j++) {
-					// multiple the random by 10 and then cast to in
-					genes[i][j] = ((int) (Math.random() * 4));
-					System.out.print(genes[i][j]);
-				}
-			}
+		int[]genes;
+	}
+	public static Organism CreateGenes() {
+		int genes[] = new int[1200];
+		System.out.println("Creating genes");
+		for (int i = 0; i < genes.length; i++) {
+			// do the for in the row according to the column size
+			System.out.println("");
+			System.out.println("Printing the genenome of of the " + i + " organism:");
+			
+			genes[i] = ((int) (Math.random() * 4));
+			System.out.print(genes[i]);
 		}
+		Organism test= new Organism();
+		test.genotype.genes = genes;
 	}
 
 	void geneticAlgorithm() {
@@ -92,28 +93,24 @@ public class GeneticAlgorithm {
 			generation = nextGeneration;
 
 		}
-		// o.fitness=number of correct characters in the Organisms genotype;//how do you
-		// find this
 	}
 
 	Organism breed(Organism[] parents) {
-		char[] genes = new char[genotypeSize];
+		int[] genes = new int[genotypeSize];
 		Random r = new Random();
 		for (int i = 0; i <= genotypeSize; i++) {
 
-			Organism parentToInheritFrom = parent[r.nextInt(numberOfParents)];
+			Organism parentToInheritFrom = parents[r.nextInt(numberOfParents)];
 			genes[i] = parentToInheritFrom.genotype.genes[i];
 		}
-		return new Genotype(genes);
-		// we need a genotype constructor
-
+		Genotype genotype= new Genotype(genes);
 	}
 
 	void mutate(Organism o) {
 		for(int i=0; i<=genotypeSize; i++) {
 			if(Math.random()< mutationRate) {
 				//o.genotype.genes[i]= random genes so like up down left rights;
-				o.genotype.genes[i]=
+				o.genotype.genes[i]=Genotype.CreateGenes();
 			}
 				
 		}
