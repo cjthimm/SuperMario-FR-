@@ -80,7 +80,7 @@ public class RunAI {
 				r.delay(250);
 				count++;
 				fitness = Time.getxAfterDeath();
-				System.out.println("fitness: "+fitness);
+				//System.out.println("fitness: "+fitness);
 			
 			}
 			 
