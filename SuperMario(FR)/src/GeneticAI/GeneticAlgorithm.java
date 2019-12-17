@@ -121,10 +121,10 @@ public class GeneticAlgorithm {
 	}
 
 	void mutate(Organism o) {
+		Random r = new Random();
 		for(int i=0; i<=genotypeSize; i++) {
 			if(Math.random()< mutationRate) {
-				//o.genotype.genes[i]= random genes so like up down left rights;
-				o.genotype.genes[i]=Genotype.;
+				o.genotype.genes[i] = r.nextInt(3);
 			}
 				
 		}
