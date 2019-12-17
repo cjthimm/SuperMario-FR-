@@ -11,10 +11,7 @@ import br.ol.smb.entity.Point;
 import br.ol.smb.entity.Screen;
 import br.ol.smb.entity.Tilemap;
 import br.ol.smb.entity.Title;
-
-import GeneticAI.GeneGenerator;
 import GeneticAI.RunAI;
-
 import java.awt.AWTException;
 import java.awt.Color;
 import java.awt.Graphics2D;
