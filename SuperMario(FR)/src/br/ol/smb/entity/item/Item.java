@@ -44,7 +44,7 @@ public class Item extends Actor {
     }
     
     public void onImpact(boolean lastObject) {
-        System.out.println("achou object = " + getClass().getName());
+        //System.out.println("achou object = " + getClass().getName());
         if (lastObject && endTileId != tile.getId()) {
             map.replaceTile(tile, endTileId);
         }
