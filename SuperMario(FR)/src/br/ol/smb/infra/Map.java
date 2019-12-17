@@ -309,6 +309,7 @@ public class Map {
             int row = Integer.parseInt(data[1]);
             Tile tile = getTileByCell(col, row);
             //tile.setCheckpoint(true);
+            //this
             if (game.getLastCheckpoint() == null) {
                 game.setLastCheckpoint(tile);
             }
