@@ -57,6 +57,7 @@ public class Time {
     }
     
     static void update() {
+    	//System.out.println(xAfterDeath);
         currentTime = System.nanoTime() * 0.000000001;
         deltaTime = currentTime - previousTime;
         unprocessedTime += deltaTime;
@@ -67,8 +68,8 @@ public class Time {
             if(Game.getGameState() == GameState.PLAYING&&!Mario.marioIsDead()) {
                 if(fixedFrames%15==0) {
                     nextMove++;
-                	System.out.println("*****Index for next move = "+ nextMove);
-                	System.out.println("X value = "+Actor.getMinX());// 1/4 SECONDS*******
+                	//System.out.println("*****Index for next move = "+ nextMove);
+                	//System.out.println("X value = "+Actor.getMinX());// 1/4 SECONDS*******
                 	if(Actor.getMinX()>0) {
                 		xAfterDeath = Actor.getMinX();
                 	}
@@ -94,7 +95,7 @@ public class Time {
         }
         return false;
     }
-    public static int getxAfterDeath() {
+    public int getxAfterDeath() {
     	return xAfterDeath;
     }
     
