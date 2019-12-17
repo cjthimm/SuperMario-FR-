@@ -54,7 +54,7 @@ public class Time {
             if(startCounter) {
                 if(fixedFrames%15==0) {
                     nextMove++;
-                	System.out.println("Index for next move = "+ nextMove+"\nX value ="+Actor.getMinX());// 1/4 SECONDS*******
+                	//System.out.println("Index for next move = "+ nextMove+"\nX value ="+Actor.getMinX());// 1/4 SECONDS*******
                 }
             }
         }

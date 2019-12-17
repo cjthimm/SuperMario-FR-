@@ -423,6 +423,7 @@ public class Game {
     }
 
     public void tryNextLife() {
+    	RunAI.NextMario();
         clearScene();
         lives--;
         if (lives > 0) {
