@@ -110,9 +110,11 @@ public class GeneticAlgorithm {
 	}// end void geneticAlgorithm
 
 	void evaluate(Organism o) {
+		//create robot on different thread with the genes of Organism o
 		while (!Time.getDead()) {
 			o.fitness = Time.getX();
 		}
+		//close robot
 	}
 
 	Organism breed(Organism[] parents) {
