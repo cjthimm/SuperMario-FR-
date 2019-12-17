@@ -44,7 +44,7 @@ public class RunAI {
 			 while (x) {
 				 
 				 
-				 System.out.println("Generation number" + GeneticAlgorithm.generationNumber+ " Organism #: "+ organism);
+				 //System.out.println("Generation number" + GeneticAlgorithm.generationNumber+ " Organism #: "+ organism);
 				 
 				 //if(genes[count][organism] == 0) {
 				 if(genes[count] == 0) {
