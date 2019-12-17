@@ -32,7 +32,7 @@ public class GeneticAlgorithm {
 		
 		
 	}
-	public static Organism CreateGenes() {
+	public Organism CreateOrganism() {
 		int genes[] = new int[1200];
 		System.out.println("Creating genes");
 		for (int i = 0; i < genes.length; i++) {
@@ -43,14 +43,14 @@ public class GeneticAlgorithm {
 			genes[i] = ((int) (Math.random() * 4));
 			System.out.print(genes[i]);
 		}
-		Organism test= new Organism();
-		test.genotype.genes = genes;
+		Organism test= new Organism(new Genotype(genes));
+		return test;
 	}
 
 	void geneticAlgorithm() {
 		Organism[] generation = new Organism[generationSize];
 		for (int i = 0; i <= generationSize; i++) {
-			generation[i] = Organism.CreateGenes();
+			generation[i] = CreateOrganism();
 			// and organism with a randomly generated genotype
 			// randomly generate java.util.random with the about genes array
 		}
@@ -88,7 +88,7 @@ public class GeneticAlgorithm {
 			for (int i = 0; i <= generationSize; i++) {
 				nextGeneration[i] = breed(parents);
 			}
-			for (int o; o <= nextGeneration.length; o++) {
+			for (int o=0; o <= nextGeneration.length; o++) {
 				mutate(nextGeneration[o]);
 			}
 			generation = nextGeneration;
@@ -119,7 +119,7 @@ public class GeneticAlgorithm {
 		Random r = new Random();
 		for(int i=0; i<=genotypeSize; i++) {
 			if(Math.random()< mutationRate) {
-				o.genotype.genes[i] = r.nextInt(3);
+				o.genotype.genes[i] = r.nextInt(4);
 			}
 				
 		}
