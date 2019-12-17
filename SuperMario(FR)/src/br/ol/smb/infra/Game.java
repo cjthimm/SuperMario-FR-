@@ -415,7 +415,8 @@ public class Game {
     }
 
     public void playWorld() {
-        setGameState(GameState.PLAYING);       
+        setGameState(GameState.PLAYING);
+        Time.startCounter = true;
         Music.stop();
         Music.play(world);
         
