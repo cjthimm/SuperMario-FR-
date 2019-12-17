@@ -1,6 +1,7 @@
 package GeneticAI;
 
 import java.util.Random;
+import br.ol.smb.infra.Time;
 
 public class GeneticAlgorithm {
 
@@ -58,8 +59,8 @@ public class GeneticAlgorithm {
 				break;
 			for (int o=0; o <= generation.length; o++) {
 				evaluate(generation[o]);
-					
 				}
+			
 				for (int i = 0; i < generation.length; i++) {
 					int a = generation[i].fitness;
 					int b = generation[i + 1].fitness;
@@ -96,8 +97,11 @@ public class GeneticAlgorithm {
 	}
 	
 	void evaluate(Organism o) {
-		o.fitness = 
+		while(!Time.getDead()) {
+			o.fitness= Time.getX();
+		}	
 	}
+	
 
 	Organism breed(Organism[] parents) {
 		int[] genes = new int[genotypeSize];
