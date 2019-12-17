@@ -65,9 +65,11 @@ public class RunAI {
 				}
 
 				if (genes[count] == 3) {
+					r.keyPress(KeyEvent.VK_RIGHT);
 					r.keyPress(KeyEvent.VK_Z);
 					r.delay(130 * 60 / Time.fps);
 					r.keyRelease(KeyEvent.VK_Z);
+					r.keyRelease(KeyEvent.VK_RIGHT);
 					// System.out.println("FireBALL!! - "+(130*60/Time.fps));
 				}
 
