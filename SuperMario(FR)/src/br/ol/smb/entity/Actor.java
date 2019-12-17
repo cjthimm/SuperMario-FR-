@@ -34,6 +34,7 @@ public class Actor extends Entity {
     
     public static int getMinX() {
     	return minX;
+    	//asdf
     }
     
     public Actor(Game game) {

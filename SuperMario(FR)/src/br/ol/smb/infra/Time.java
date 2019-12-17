@@ -75,6 +75,7 @@ public class Time {
                 	}
                     else{
                     	dead = false;
+                    	//asdf
                     }
                 }
             }

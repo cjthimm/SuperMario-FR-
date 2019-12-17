@@ -806,6 +806,7 @@ public class Mario extends Actor {
 
 	public static boolean marioIsDead() {
 		return marioDead;
+		//asdf
 	}
 
 }
