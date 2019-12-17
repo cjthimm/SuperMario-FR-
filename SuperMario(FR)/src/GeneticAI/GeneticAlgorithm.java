@@ -14,7 +14,7 @@ public class GeneticAlgorithm implements Runnable {
 	int genotypeSize = 1200;
 	int maxGenerations = 1000;
 	int fitnessThreshold = 3043;
-	int generationSize = 10;
+	int generationSize = 4; //Changed lower temperaroly
 	int numberOfParents = 2;
 	double mutationRate = 0.03;
 
@@ -122,6 +122,10 @@ public class GeneticAlgorithm implements Runnable {
 		Random r = new Random();
 		for (int i = 0; i < genotypeSize; i++) {
 			Organism parentToInheritFrom = parents[r.nextInt(numberOfParents)];
+			System.out.println(i);
+			System.out.println(parentToInheritFrom);
+			System.out.println(genes.length);
+			//Exception Occured below
 			genes[i] = parentToInheritFrom.genotype.genes[i];
 		}
 		Genotype genotype = new Genotype(genes);
