@@ -120,8 +120,7 @@ public class GeneticAlgorithm implements Runnable {
 	Organism breed(Organism[] parents) {
 		int[] genes = new int[genotypeSize];
 		Random r = new Random();
-		for (int i = 0; i <= genotypeSize; i++) {
-
+		for (int i = 0; i < genotypeSize; i++) {
 			Organism parentToInheritFrom = parents[r.nextInt(numberOfParents)];
 			genes[i] = parentToInheritFrom.genotype.genes[i];
 		}
@@ -131,7 +130,7 @@ public class GeneticAlgorithm implements Runnable {
 
 	void mutate(Organism o) {
 		Random r = new Random();
-		for (int i = 0; i <= genotypeSize; i++) {
+		for (int i = 0; i <genotypeSize; i++) {
 			if (Math.random() < mutationRate) {
 				o.genotype.genes[i] = r.nextInt(4);
 			}
