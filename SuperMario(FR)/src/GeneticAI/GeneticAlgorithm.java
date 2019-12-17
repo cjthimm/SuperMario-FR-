@@ -74,7 +74,7 @@ public class GeneticAlgorithm implements Runnable {
 					int temp;
 					temp = a;
 					a = b;
-					b = temp;
+					b = temp; 
 				}
 			}
 			// selection
