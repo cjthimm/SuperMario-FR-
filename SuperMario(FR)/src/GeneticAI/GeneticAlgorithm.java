@@ -86,9 +86,9 @@ public class GeneticAlgorithm implements Runnable {
 			
 			try {
 				out = new PrintWriter("genotype.txt");
-				out.println("The two fittest organisms were " + Arrays.toString(parents[0].genotype.genes)
-						+ "\nWith a fitness score of\n " + parents[0].fitness + "\nand \n"
-						+ Arrays.toString(parents[1].genotype.genes) + "/nWith a fitness score of "
+				out.println("The two fittest organisms were:\n " + Arrays.toString(parents[0].genotype.genes)
+						+ "\nWith a fitness score of: " + parents[0].fitness + "\nand \n"
+						+ Arrays.toString(parents[1].genotype.genes) + "\nWith a fitness score of:\n"
 						+ parents[1].fitness);
 				out.close();
 			} catch (FileNotFoundException e) {
