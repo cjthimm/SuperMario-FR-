@@ -56,7 +56,10 @@ public class GeneticAlgorithm {
 		for (int g = 0; g <= maxGenerations; g++) {
 			if (generation[0].fitness >= fitnessThreshold)
 				break;
-			for (int o; o <= generation.length; o++) {
+			for (int o=0; o <= generation.length; o++) {
+				evaluate(generation[o]);
+					
+				}
 				for (int i = 0; i < generation.length; i++) {
 					int a = generation[i].fitness;
 					int b = generation[i + 1].fitness;
@@ -71,12 +74,9 @@ public class GeneticAlgorithm {
 						b = temp;
 					}
 				}
-
-			}
-
+			//selection
 			Organism[] parents = new Organism[numberOfParents];
-			// size of numberOfParents
-
+			
 			for (int i = 0; i < numberOfParents; i++) {
 				// copy the array of organism over into parents in order of fitness.sorting
 				// descending
@@ -88,23 +88,15 @@ public class GeneticAlgorithm {
 				nextGeneration[i] = breed(parents);
 			}
 			for (int o; o <= nextGeneration.length; o++) {
-				mutate(o);// ?
+				mutate(nextGeneration[o]);
 			}
 			generation = nextGeneration;
 
 		}
 	}
 	
-	int evaluate(Organism o) {
-		int fitnessScore = 0;
-		// ******Casey******* I think you said you were going to figure out how to find
-		// this distance?
-		// take the length of the x axis and take that difference and subtract by an
-		// arbitrarily large number
-		// 1000-x of mario to goal
-		// that number is not the fitness score of that organism
-
-		return fitnessScore;
+	void evaluate(Organism o) {
+		o.fitness = 
 	}
 
 	Organism breed(Organism[] parents) {
