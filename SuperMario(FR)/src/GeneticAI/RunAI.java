@@ -4,13 +4,19 @@ import java.awt.AWTException;
 import java.awt.Robot;
 import java.awt.event.KeyEvent;
 
-public class RunAI implements Runnable {
+import GeneticAI.GeneticAlgorithm.Organism;
+import br.ol.smb.infra.Time;
 
-	private static int[][] genes;
+public class RunAI {
+
+	private static int[] genes =null;
 	private static int organism =0;
 	private static int count = 0;
+	private static boolean x = true;
 
-	
+	public static void setGenes(int[] genes2) {
+		genes = genes2;
+	}
 	public static void NextGeneration() {
 		organism = 0;
 	}
@@ -18,48 +24,57 @@ public class RunAI implements Runnable {
 	public static void NextMario() {
 		System.out.println("Move to next organism");
 		organism++;
+		x = false;
 	}
 
 
-	@Override
-	public void run() {
-		
-		genes = GeneGenerator.CreateGenes();
+	public static int runRobot(Organism o) {
+		int count = 0;
+		x= true;
+		setGenes(o.genotype.genes);
+		//genes = GeneGenerator.CreateGenes();
+		int fitness = -1;
 		Robot r;
-		int preorg = 0;
+		//int preorg = 0;
 		try {
 			r = new Robot();
-			r.delay(15000);
-			 while (true) {
-				 System.out.println("organism: "+organism + "|| preorg: " + preorg);
-				 if(preorg < organism)
-					 r.delay(3000);
+			//r.delay(15000);
+			 while (x) {
+				 //System.out.println("organism: "+organism + "|| preorg: " + preorg);
+				 //if(preorg < organism)
+					 //r.delay(3000);
 				 
-				 preorg = organism;
-				 System.out.println(organism);
+				 //preorg = organism;
+				 System.out.print(genes[0]);
+				 System.out.print(genes[1]);
+				 System.out.print(genes[2]);
+				 System.out.print(genes[3]);
+				 System.out.print(genes[4]);
 				
-				 if(genes[organism][count] == 0) {
+				 
+				 //if(genes[count][organism] == 0) {
+				 if(genes[count] == 0) {
 					r.keyPress(KeyEvent.VK_RIGHT);
 				 	r.delay(150);
 					r.keyRelease(KeyEvent.VK_RIGHT);
 					System.out.println("right");
 				}
 				
-				if(genes[organism][count] == 1) {
-					r.keyPress(KeyEvent.VK_LEFT);
-					r.delay(150);
-					r.keyRelease(KeyEvent.VK_LEFT);
-					System.out.println("jump");
-				}
+//				if(genes[count] == 1) {
+//					r.keyPress(KeyEvent.VK_LEFT);
+//					r.delay(150);
+//					r.keyRelease(KeyEvent.VK_LEFT);
+//					System.out.println("jump");
+//				}
 				
-				if(genes[organism][count] == 2) {
+				if(genes[count] == 2) {
 					r.keyPress(KeyEvent.VK_X);
 					r.delay(150);
 					r.keyRelease(KeyEvent.VK_X);
 					System.out.println("jump");
 				}
 				
-				if(genes[organism][count] == 3) {
+				if(genes[count] == 3) {
 					r.keyPress(KeyEvent.VK_Z);
 					r.delay(150);
 					r.keyRelease(KeyEvent.VK_Z);
@@ -68,12 +83,15 @@ public class RunAI implements Runnable {
 
 				r.delay(250);
 				count++;
+				fitness = Time.getX();
 			
 			}
+			 
 		} catch (AWTException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		return fitness;
 	}
 	
 	
