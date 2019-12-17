@@ -54,7 +54,7 @@ public class RunAI {
 					r.keyPress(KeyEvent.VK_RIGHT);
 				 	r.delay(250*60/Time.fps);
 					r.keyRelease(KeyEvent.VK_RIGHT);
-					System.out.println("right - "+(250*60/Time.fps));
+					//System.out.println("right - "+(250*60/Time.fps));
 				}
 				
 				if(genes[count] == 1) {
@@ -63,21 +63,21 @@ public class RunAI {
 					r.delay(350*60/Time.fps);
 					r.keyRelease(KeyEvent.VK_RIGHT);
 					r.keyPress(KeyEvent.VK_X);
-					System.out.println("jump - "+(350*60/Time.fps));
+					//System.out.println("jump - "+(350*60/Time.fps));
 				}
 				
 				if(genes[count] == 2) {
 					r.keyPress(KeyEvent.VK_X);
 					r.delay(350*60/Time.fps);
 					r.keyRelease(KeyEvent.VK_X);
-					System.out.println("jump - "+(350*60/Time.fps));
+					//System.out.println("jump - "+(350*60/Time.fps));
 				}
 				
 				if(genes[count] == 3) {
 					r.keyPress(KeyEvent.VK_Z);
 					r.delay(130*60/Time.fps);
 					r.keyRelease(KeyEvent.VK_Z);
-					System.out.println("FireBALL!! - "+(130*60/Time.fps));
+					//System.out.println("FireBALL!! - "+(130*60/Time.fps));
 				}
 
 				//r.delay(100*60/Time.fps);

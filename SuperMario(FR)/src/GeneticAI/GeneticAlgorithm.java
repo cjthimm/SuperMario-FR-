@@ -4,17 +4,17 @@ import java.io.FileNotFoundException;
 import java.io.PrintWriter;
 import java.util.Arrays;
 import java.util.Random;
-import br.ol.smb.infra.Time;
-
 
 public class GeneticAlgorithm implements Runnable {
 
 	int genotypeSize = 1200;
 	int maxGenerations = 1000;
 	int fitnessThreshold = 3043;
-	int generationSize = 4; //Changed lower temperaroly
+	int generationSize = 8; // Changed lower temporarily
 	int numberOfParents = 2;
 	double mutationRate = 0.03;
+	int generationCount;
+	int organismCount;
 
 	class Organism {
 		Genotype genotype;
@@ -34,20 +34,21 @@ public class GeneticAlgorithm implements Runnable {
 
 	}
 
-	public Organism CreateOrganism() {
+	public Organism createOrganism() {
 		int genes[] = new int[genotypeSize];
-			for (int i = 0; i < genes.length; i++) {
-				genes[i] = ((int) (Math.random() * 4));
+		for (int i = 0; i < genes.length; i++) {
+			genes[i] = ((int) (Math.random() * 4));
 		}
-		System.out.println(Arrays.toString(genes));
 		Organism test = new Organism(new Genotype(genes));
 		return test;
 	}
 
 	void geneticAlgorithm() {
+		generationCount = 1;
+		organismCount = 1;
 		Organism[] generation = new Organism[generationSize];
 		for (int i = 0; i < generationSize; i++) {
-			generation[i] = CreateOrganism();
+			generation[i] = createOrganism();
 		}
 		for (int g = 0; g < maxGenerations; g++) {
 			if (generation[0].fitness >= fitnessThreshold)
@@ -56,14 +57,14 @@ public class GeneticAlgorithm implements Runnable {
 				evaluate(generation[o]);
 			}
 
-			for (int i = 0; i < generation.length-1; i++) {
+			for (int i = 0; i < generation.length - 1; i++) {
 				int a = generation[i].fitness;
 				int b = generation[i + 1].fitness;
 				if (a < b) {
 					int temp;
 					temp = a;
 					a = b;
-					b = temp; 
+					b = temp;
 				}
 			}
 			// selection
@@ -72,7 +73,7 @@ public class GeneticAlgorithm implements Runnable {
 			for (int i = 0; i < numberOfParents; i++) {
 				// copy the array of organism over into parents in order of fitness.sorting
 				// descending
-				parents[i]=generation[i];
+				parents[i] = generation[i];
 			}
 			Organism[] nextGeneration = new Organism[generationSize];
 			for (int i = 0; i < generationSize; i++) {
@@ -83,24 +84,27 @@ public class GeneticAlgorithm implements Runnable {
 			}
 			generation = nextGeneration;
 			PrintWriter out;
-			
+
 			try {
 				out = new PrintWriter("genotype.txt");
 				out.println("The two fittest organisms were:\n " + Arrays.toString(parents[0].genotype.genes)
 						+ "\nWith a fitness score of: " + parents[0].fitness + "\nand \n"
-						+ Arrays.toString(parents[1].genotype.genes) + "\nWith a fitness score of:\n"
+						+ Arrays.toString(parents[1].genotype.genes) + "\nWith a fitness score of: "
 						+ parents[1].fitness);
 				out.close();
 			} catch (FileNotFoundException e) {
 				e.printStackTrace();
 			}
-
+			generationCount++;
 		}
 	}// end void geneticAlgorithm
 
 	void evaluate(Organism o) {
+		System.out.println("Generation: " + generationCount);
+		System.out.println("Organism Number: " + organismCount++);
 		o.fitness = RunAI.runRobot(o);
-		System.out.println("Fitness:  "+o.fitness);
+		System.out.println("Fitness: " + o.fitness);
+		System.out.println("***************************");
 	}
 
 	Organism breed(Organism[] parents) {
@@ -108,10 +112,6 @@ public class GeneticAlgorithm implements Runnable {
 		Random r = new Random();
 		for (int i = 0; i < genotypeSize; i++) {
 			Organism parentToInheritFrom = parents[r.nextInt(numberOfParents)];
-			System.out.println(i);
-			System.out.println(parentToInheritFrom);
-			System.out.println(genes.length); 
-			//Exception Occured below
 			genes[i] = parentToInheritFrom.genotype.genes[i];
 		}
 		Genotype genotype = new Genotype(genes);
@@ -120,7 +120,7 @@ public class GeneticAlgorithm implements Runnable {
 
 	void mutate(Organism o) {
 		Random r = new Random();
-		for (int i = 0; i <genotypeSize; i++) {
+		for (int i = 0; i < genotypeSize; i++) {
 			if (Math.random() < mutationRate) {
 				o.genotype.genes[i] = r.nextInt(4);
 			}
