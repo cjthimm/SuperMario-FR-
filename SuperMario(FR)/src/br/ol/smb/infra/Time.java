@@ -13,7 +13,7 @@ import br.ol.smb.infra.Game.GameState;
 public class Time {
 	public static int nextMove;
 	public static boolean startCounter;
-	public static int fps = 60;
+	public static int fps = 120;
 	public static int xAfterDeath;
     //my code
     
@@ -95,7 +95,7 @@ public class Time {
         }
         return false;
     }
-    public int getxAfterDeath() {
+    public static int getxAfterDeath() {
     	return xAfterDeath;
     }
     

@@ -49,7 +49,7 @@ public class RunAI {
 				 //if(genes[count][organism] == 0) {
 				 if(genes[count] == 0) {
 					r.keyPress(KeyEvent.VK_RIGHT);
-				 	r.delay(150);
+				 	r.delay(150*60/Time.fps);
 					r.keyRelease(KeyEvent.VK_RIGHT);
 					System.out.println("right");
 				}
@@ -57,7 +57,7 @@ public class RunAI {
 				if(genes[count] == 1) {
 					r.keyPress(KeyEvent.VK_RIGHT);
 					r.keyPress(KeyEvent.VK_X);
-					r.delay(250);
+					r.delay(250*60/Time.fps);
 					r.keyRelease(KeyEvent.VK_RIGHT);
 					r.keyPress(KeyEvent.VK_X);
 					System.out.println("jump");
@@ -65,19 +65,19 @@ public class RunAI {
 				
 				if(genes[count] == 2) {
 					r.keyPress(KeyEvent.VK_X);
-					r.delay(250);
+					r.delay(250*60/Time.fps);
 					r.keyRelease(KeyEvent.VK_X);
 					System.out.println("jump");
 				}
 				
 				if(genes[count] == 3) {
 					r.keyPress(KeyEvent.VK_Z);
-					r.delay(30);
+					r.delay(30*60/Time.fps);
 					r.keyRelease(KeyEvent.VK_Z);
 					System.out.println("FireBALL!!");
 				}
 
-				r.delay(100);
+				r.delay(100*60/Time.fps);
 				count++;
 				fitness = Time.getxAfterDeath();
 				//System.out.println("fitness: "+fitness);
