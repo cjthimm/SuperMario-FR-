@@ -2,6 +2,7 @@ package br.ol.smb.infra;
 
 import GeneticAI.RunAI;
 import br.ol.smb.entity.Actor;
+import br.ol.smb.infra.Game.GameState;
 
 /**
  * Time class.
@@ -60,12 +61,13 @@ public class Time {
             unprocessedTime -= fixedDeltaTime;
             fixedUpdateCount++;
             fixedFrames++;
-            if(startCounter) {
+            if(Game.getGameState() == GameState.PLAYING&&!Actor.isDead()) {
                 if(fixedFrames%15==0) {
                     nextMove++;
 //<<<<<<< HEAD
-                	System.out.println("Index for next move = "+ nextMove+"\nX value = "+Actor.getMinX());// 1/4 SECONDS*******
+                	System.out.println("*****Index for next move = "+ nextMove+"\nX value = "+Actor.getMinX());// 1/4 SECONDS*******
                     if(Actor.isDead()) {
+                    	//startCounter = false;
                 		dead = true;
                 		xValue = Actor.getMinX();
                 	}
