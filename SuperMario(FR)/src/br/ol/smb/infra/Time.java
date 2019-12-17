@@ -2,6 +2,7 @@ package br.ol.smb.infra;
 
 import GeneticAI.RunAI;
 import br.ol.smb.entity.Actor;
+import br.ol.smb.entity.Mario;
 import br.ol.smb.infra.Game.GameState;
 
 /**
@@ -12,6 +13,8 @@ import br.ol.smb.infra.Game.GameState;
 public class Time {
 	public static int nextMove;
 	public static boolean startCounter;
+	public static int fps = 60;
+	public static int xAfterDeath;
     //my code
     
     private static int fixedFrames;
@@ -20,7 +23,7 @@ public class Time {
     private static double currentTime;
     private static double previousTime;
     private static double unprocessedTime;
-    private static double fixedDeltaTime = 1.0 / 60.0;
+    private static double fixedDeltaTime = 1.0 / fps;
     private static int fixedUpdateCount;
     public static boolean dead;
     public static int xValue;
@@ -61,22 +64,23 @@ public class Time {
             unprocessedTime -= fixedDeltaTime;
             fixedUpdateCount++;
             fixedFrames++;
-            if(Game.getGameState() == GameState.PLAYING&&!Actor.isDead()) {
+            if(Game.getGameState() == GameState.PLAYING&&!Mario.marioIsDead()) {
                 if(fixedFrames%15==0) {
                     nextMove++;
-//<<<<<<< HEAD
-                	System.out.println("*****Index for next move = "+ nextMove+"\nX value = "+Actor.getMinX());// 1/4 SECONDS*******
-                    if(Actor.isDead()) {
+                	System.out.println("*****Index for next move = "+ nextMove);
+                	System.out.println("X value = "+Actor.getMinX());// 1/4 SECONDS*******
+                	if(Actor.getMinX()>0) {
+                		xAfterDeath = Actor.getMinX();
+                	}
+                    if(Mario.marioIsDead()) {
                     	//startCounter = false;
                 		dead = true;
                 		xValue = Actor.getMinX();
                 	}
                     else{
                     	dead = false;
+                    	//asdf
                     }
-//=======
-                	//System.out.println("Index for next move = "+ nextMove+"\nX value ="+Actor.getMinX());// 1/4 SECONDS*******
-//>>>>>>> branch 'master' of https://github.com/cjthimm/SuperMario-FR-.git
                 }
             }
         }
@@ -89,6 +93,9 @@ public class Time {
             return true;
         }
         return false;
+    }
+    public static int getxAfterDeath() {
+    	return xAfterDeath;
     }
     
 }
