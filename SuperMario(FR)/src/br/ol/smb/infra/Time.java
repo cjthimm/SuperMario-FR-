@@ -21,7 +21,16 @@ public class Time {
     private static double unprocessedTime;
     private static double fixedDeltaTime = 1.0 / 60.0;
     private static int fixedUpdateCount;
+    public static boolean dead;
+    public static int xValue;
 
+    public static boolean getDead() {
+    	return dead;
+    }
+    public static int getX() {
+    	return xValue;
+    }
+    
     public static int getFixedFrames() {
         return fixedFrames;
     }
@@ -54,10 +63,14 @@ public class Time {
             if(startCounter) {
                 if(fixedFrames%15==0) {
                     nextMove++;
-                	System.out.println("Index for next move = "+ nextMove+"\nX value = "+Actor.getMinX());// 1/4 SECONDS*******
+                	//System.out.println("Index for next move = "+ nextMove+"\nX value = "+Actor.getMinX());// 1/4 SECONDS*******
                     if(Actor.isDead()) {
-                		System.out.println("you dead bitch");
+                		dead = true;
+                		xValue = Actor.getMinX();
                 	}
+                    else{
+                    	dead = false;
+                    }
                 }
             }
         }
