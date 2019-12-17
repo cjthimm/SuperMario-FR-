@@ -111,14 +111,9 @@ public class GeneticAlgorithm implements Runnable {
 	}// end void geneticAlgorithm
 
 	void evaluate(Organism o) {
-		//create robot on different thread with the genes of Organism o
-
-//		while (!Time.getDead()) {
-//			o.fitness = Time.getX();
-//		}
-		
+		//create robot on different thread with the genes of Organism o	
 		o.fitness = RunAI.runRobot(o);
-		System.out.println(o.fitness);
+		System.out.println("Fitness:  "+o.fitness);
 		//close robot
 	}
 

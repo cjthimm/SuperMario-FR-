@@ -41,12 +41,7 @@ public class RunAI {
 			//r.delay(15000);
 			 while (x) {
 				 
-				 System.out.print(genes[0]);
-				 System.out.print(genes[1]);
-				 System.out.print(genes[2]);
-				 System.out.print(genes[3]);
-				 System.out.print(genes[4]);
-				
+				 System.out.println("Organism #: "+ organism);
 				 
 				 //if(genes[count][organism] == 0) {
 				 if(genes[count] == 0) {
@@ -56,12 +51,14 @@ public class RunAI {
 					System.out.println("right");
 				}
 				
-//				if(genes[count] == 1) {
-//					r.keyPress(KeyEvent.VK_LEFT);
-//					r.delay(150);
-//					r.keyRelease(KeyEvent.VK_LEFT);
-//					System.out.println("jump");
-//				}
+				if(genes[count] == 1) {
+					r.keyPress(KeyEvent.VK_RIGHT);
+					r.keyPress(KeyEvent.VK_X);
+					r.delay(200);
+					r.keyRelease(KeyEvent.VK_RIGHT);
+					r.keyPress(KeyEvent.VK_X);
+					System.out.println("jump");
+				}
 				
 				if(genes[count] == 2) {
 					r.keyPress(KeyEvent.VK_X);
