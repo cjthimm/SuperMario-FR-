@@ -52,12 +52,12 @@ public class GeneticAlgorithm {
 
 	void geneticAlgorithm() {
 		Organism[] generation = new Organism[generationSize];
-		for (int i = 0; i <= generationSize; i++) {
+		for (int i = 0; i < generationSize; i++) {
 			generation[i] = CreateOrganism();
 			// and organism with a randomly generated genotype
 			// randomly generate java.util.random with the about genes array
 		}
-		for (int g = 0; g <= maxGenerations; g++) {
+		for (int g = 0; g < maxGenerations; g++) {
 			if (generation[0].fitness >= fitnessThreshold)
 				break;
 			for (int o = 0; o <= generation.length; o++) {
