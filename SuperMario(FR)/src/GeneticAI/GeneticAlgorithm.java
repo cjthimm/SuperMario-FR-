@@ -1,7 +1,5 @@
 package GeneticAI;
 
-​
-
 import java.util.Random;
 
 public class GeneticAlgorithm {
@@ -41,7 +39,7 @@ public class GeneticAlgorithm {
 	void geneticAlgorithm() {
 		Organism[] generation = new Organism[generationSize];
 		for (int i = 0; i <= generationSize; i++) {
-			generation[i] = Genotype.CreateGenes();
+			generation[i] = Organism.CreateGenes();
 			// and organism with a randomly generated genotype
 			// randomly generate java.util.random with the about genes array
 		}
@@ -49,14 +47,7 @@ public class GeneticAlgorithm {
 			if (generation[0].fitness >= fitnessThreshold)
 				break;
 			for (int o; o <= generation.length; o++) {
-				// ******Casey******* I think you said you were going to figure out how to find
-				// this distance?
-				// take the length of the x axis and take that difference and subtract by an
-				// arbitrarily large number
-				// 1000-x of mario to goal
-				// that number is not the fitness score of that organism
-
-				int fitnessScore = evaluate(o);
+				
 				for (int i = 0; i < generation.length; i++) {
 					Organism a = generation[i];
 					Organism b = generation[i + 1];
@@ -93,6 +84,17 @@ public class GeneticAlgorithm {
 			generation = nextGeneration;
 
 		}
+	}
+	
+	void evaluate(Organism o) {
+		// ******Casey******* I think you said you were going to figure out how to find
+		// this distance?
+		// take the length of the x axis and take that difference and subtract by an
+		// arbitrarily large number
+		// 1000-x of mario to goal
+		// that number is not the fitness score of that organism
+
+		int fitnessScore = evaluate(o);
 	}
 
 	Organism breed(Organism[] parents) {
