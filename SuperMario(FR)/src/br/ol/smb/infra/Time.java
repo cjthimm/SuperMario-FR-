@@ -1,6 +1,7 @@
 package br.ol.smb.infra;
 
 import GeneticAI.RunAI;
+import br.ol.smb.entity.Actor;
 
 /**
  * Time class.
@@ -8,6 +9,9 @@ import GeneticAI.RunAI;
  * @author Leonardo Ono (ono.leo@gmail.com)
  */
 public class Time {
+	public static int nextMove;
+	public static boolean startCounter;
+    //my code
     
     private static int fixedFrames;
     // note: all time in seconds
@@ -47,6 +51,12 @@ public class Time {
             unprocessedTime -= fixedDeltaTime;
             fixedUpdateCount++;
             fixedFrames++;
+            if(startCounter) {
+                if(fixedFrames%15==0) {
+                    nextMove++;
+                	System.out.println("Index for next move = "+ nextMove+"\nX value ="+Actor.getMinX());// 1/4 SECONDS*******
+                }
+            }
         }
         previousTime = currentTime;	
     }
