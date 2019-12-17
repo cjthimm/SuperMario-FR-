@@ -29,7 +29,7 @@ public class RunAI implements Runnable {
 		int preorg = 0;
 		try {
 			r = new Robot();
-			r.delay(21000);
+			r.delay(15000);
 			 while (true) {
 				 System.out.println("organism: "+organism + "|| preorg: " + preorg);
 				 if(preorg < organism)
