@@ -84,6 +84,7 @@ public class RunAI {
 				r.delay(250);
 				count++;
 				fitness = Time.getX();
+				System.out.println("fitness: "+fitness);
 			
 			}
 			 
