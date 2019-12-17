@@ -8,7 +8,7 @@ public class GeneticAlgorithm {
 	// casey is finding out how to represent this with x distance
 	int genotypeSize = 10;
 	int maxGenerations = 1000;
-	int fitnessThreshold = 10;
+	int fitnessThreshold = 3043;
 	int generationSize = 100;
 	int numberOfParents = 2;
 	double mutationRate = 0.03;
@@ -57,16 +57,15 @@ public class GeneticAlgorithm {
 			if (generation[0].fitness >= fitnessThreshold)
 				break;
 			for (int o; o <= generation.length; o++) {
-				
 				for (int i = 0; i < generation.length; i++) {
-					Organism a = generation[i];
-					Organism b = generation[i + 1];
+					int a = generation[i].fitness;
+					int b = generation[i + 1].fitness;
 					// swap if the organism a is smaller than b so that it will be largest to
 					// smallest
 					// obviously we cant compare the Organisms we need to give them fitness score
 					// then compare
 					if (a < b) {
-						Organism temp;
+						int temp;
 						temp = a;
 						a = b;
 						b = temp;
