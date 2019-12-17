@@ -94,6 +94,7 @@ public class GeneticAlgorithm {
 			}
 			generation = nextGeneration;
 			PrintWriter out;
+			
 			try {
 				out = new PrintWriter("genotype.txt");
 				out.println("The two fittest organisms were " + Arrays.toString(parents[0].genotype.genes)
