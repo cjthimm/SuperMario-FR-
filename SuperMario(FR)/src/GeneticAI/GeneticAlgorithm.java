@@ -9,12 +9,10 @@ import br.ol.smb.infra.Time;
 
 public class GeneticAlgorithm implements Runnable {
 
-	// String answer="levelCleared" ;
-	// casey is finding out how to represent this with x distance
 	int genotypeSize = 1200;
 	int maxGenerations = 1000;
 	int fitnessThreshold = 3043;
-	int generationSize = 10;
+	int generationSize = 4; //Changed lower temperaroly
 	int numberOfParents = 2;
 	double mutationRate = 0.03;
 
@@ -37,11 +35,9 @@ public class GeneticAlgorithm implements Runnable {
 	}
 
 	public Organism CreateOrganism() {
-		int genes[] = new int[1200];
-		
+		int genes[] = new int[genotypeSize];
 			for (int i = 0; i < genes.length; i++) {
 				genes[i] = ((int) (Math.random() * 4));
-				
 		}
 		System.out.println(Arrays.toString(genes));
 		Organism test = new Organism(new Genotype(genes));
@@ -52,9 +48,6 @@ public class GeneticAlgorithm implements Runnable {
 		Organism[] generation = new Organism[generationSize];
 		for (int i = 0; i < generationSize; i++) {
 			generation[i] = CreateOrganism();
-			// and organism with a randomly generated genotype
-			// randomly generate java.util.random with the about genes array
-			//System.out.println("this is organism" + i );
 		}
 		for (int g = 0; g < maxGenerations; g++) {
 			if (generation[0].fitness >= fitnessThreshold)
@@ -66,10 +59,6 @@ public class GeneticAlgorithm implements Runnable {
 			for (int i = 0; i < generation.length-1; i++) {
 				int a = generation[i].fitness;
 				int b = generation[i + 1].fitness;
-				// swap if the organism a is smaller than b so that it will be largest to
-				// smallest
-				// obviously we cant compare the Organisms we need to give them fitness score
-				// then compare
 				if (a < b) {
 					int temp;
 					temp = a;
@@ -83,7 +72,7 @@ public class GeneticAlgorithm implements Runnable {
 			for (int i = 0; i < numberOfParents; i++) {
 				// copy the array of organism over into parents in order of fitness.sorting
 				// descending
-				generation[i] = parents[i];
+				parents[i]=generation[i];
 			}
 			Organism[] nextGeneration = new Organism[generationSize];
 			for (int i = 0; i < generationSize; i++) {
@@ -98,12 +87,11 @@ public class GeneticAlgorithm implements Runnable {
 			try {
 				out = new PrintWriter("genotype.txt");
 				out.println("The two fittest organisms were " + Arrays.toString(parents[0].genotype.genes)
-						+ "/nWith a fitness score of " + parents[0].fitness + "/nand /n"
+						+ "\nWith a fitness score of\n " + parents[0].fitness + "\nand \n"
 						+ Arrays.toString(parents[1].genotype.genes) + "/nWith a fitness score of "
 						+ parents[1].fitness);
 				out.close();
 			} catch (FileNotFoundException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 
@@ -111,10 +99,8 @@ public class GeneticAlgorithm implements Runnable {
 	}// end void geneticAlgorithm
 
 	void evaluate(Organism o) {
-		//create robot on different thread with the genes of Organism o	
 		o.fitness = RunAI.runRobot(o);
 		System.out.println("Fitness:  "+o.fitness);
-		//close robot
 	}
 
 	Organism breed(Organism[] parents) {
@@ -122,6 +108,10 @@ public class GeneticAlgorithm implements Runnable {
 		Random r = new Random();
 		for (int i = 0; i < genotypeSize; i++) {
 			Organism parentToInheritFrom = parents[r.nextInt(numberOfParents)];
+			System.out.println(i);
+			System.out.println(parentToInheritFrom);
+			System.out.println(genes.length); 
+			//Exception Occured below
 			genes[i] = parentToInheritFrom.genotype.genes[i];
 		}
 		Genotype genotype = new Genotype(genes);
@@ -141,7 +131,6 @@ public class GeneticAlgorithm implements Runnable {
 
 	@Override
 	public void run() {
-		// TODO Auto-generated method stub
 		geneticAlgorithm();
 	}
 
