@@ -9,8 +9,6 @@ import br.ol.smb.infra.Time;
 
 public class GeneticAlgorithm implements Runnable {
 
-	// String answer="levelCleared" ;
-	// casey is finding out how to represent this with x distance
 	int genotypeSize = 1200;
 	int maxGenerations = 1000;
 	int fitnessThreshold = 3043;
@@ -37,7 +35,7 @@ public class GeneticAlgorithm implements Runnable {
 	}
 
 	public Organism CreateOrganism() {
-		int genes[] = new int[1200];
+		int genes[] = new int[genotypeSize];
 		
 			for (int i = 0; i < genes.length; i++) {
 				genes[i] = ((int) (Math.random() * 4));
@@ -83,7 +81,7 @@ public class GeneticAlgorithm implements Runnable {
 			for (int i = 0; i < numberOfParents; i++) {
 				// copy the array of organism over into parents in order of fitness.sorting
 				// descending
-				generation[i] = parents[i];
+				parents[i]=generation[i];
 			}
 			Organism[] nextGeneration = new Organism[generationSize];
 			for (int i = 0; i < generationSize; i++) {
