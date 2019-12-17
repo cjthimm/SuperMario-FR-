@@ -104,6 +104,7 @@ public class GeneticAlgorithm implements Runnable {
 		System.out.println("Organism Number: " + organismCount++);
 		o.fitness = RunAI.runRobot(o);
 		System.out.println("Fitness: " + o.fitness);
+		System.out.println("***************************");
 	}
 
 	Organism breed(Organism[] parents) {
