@@ -68,7 +68,7 @@ public class RunAI {
 					r.delay(250);
 					r.keyRelease(KeyEvent.VK_X);
 					System.out.println("jump");
-				}  
+				}
 				
 				if(genes[count] == 3) {
 					r.keyPress(KeyEvent.VK_Z);
