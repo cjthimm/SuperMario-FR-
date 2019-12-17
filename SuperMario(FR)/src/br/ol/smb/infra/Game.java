@@ -425,6 +425,7 @@ public class Game {
     public void tryNextLife() {
     	//moves to next organism
     	RunAI.NextMario();
+    	setLives(9);
         clearScene();
         lives--;
         if (lives > 0) {
@@ -433,6 +434,7 @@ public class Game {
             }
             map.load(world);
             setGameState(GameState.START_NEXT_LIFE);
+            setTimeLeft(400);
         }
         else {
             Music.stop();
