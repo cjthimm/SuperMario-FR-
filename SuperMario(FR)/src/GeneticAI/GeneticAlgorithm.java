@@ -98,6 +98,7 @@ public class GeneticAlgorithm implements Runnable {
 	}// end void geneticAlgorithm
 
 	void evaluate(Organism o) {
+		System.out.println("Genotype Number: " );
 		o.fitness = RunAI.runRobot(o);
 		System.out.println("Fitness:  "+o.fitness);
 	}
