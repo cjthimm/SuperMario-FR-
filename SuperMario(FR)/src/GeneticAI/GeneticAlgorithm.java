@@ -6,14 +6,15 @@ import java.util.Arrays;
 import java.util.Random;
 import br.ol.smb.infra.Time;
 
+
 public class GeneticAlgorithm implements Runnable {
 
 	// String answer="levelCleared" ;
 	// casey is finding out how to represent this with x distance
-	int genotypeSize = 10;
+	int genotypeSize = 1200;
 	int maxGenerations = 1000;
 	int fitnessThreshold = 3043;
-	int generationSize = 100;
+	int generationSize = 10;
 	int numberOfParents = 2;
 	double mutationRate = 0.03;
 
@@ -58,11 +59,11 @@ public class GeneticAlgorithm implements Runnable {
 		for (int g = 0; g < maxGenerations; g++) {
 			if (generation[0].fitness >= fitnessThreshold)
 				break;
-			for (int o = 0; o <= generation.length; o++) {
+			for (int o = 0; o < generation.length; o++) {
 				evaluate(generation[o]);
 			}
 
-			for (int i = 0; i < generation.length; i++) {
+			for (int i = 0; i < generation.length-1; i++) {
 				int a = generation[i].fitness;
 				int b = generation[i + 1].fitness;
 				// swap if the organism a is smaller than b so that it will be largest to
@@ -73,7 +74,7 @@ public class GeneticAlgorithm implements Runnable {
 					int temp;
 					temp = a;
 					a = b;
-					b = temp;
+					b = temp; 
 				}
 			}
 			// selection
@@ -85,10 +86,10 @@ public class GeneticAlgorithm implements Runnable {
 				generation[i] = parents[i];
 			}
 			Organism[] nextGeneration = new Organism[generationSize];
-			for (int i = 0; i <= generationSize; i++) {
+			for (int i = 0; i < generationSize; i++) {
 				nextGeneration[i] = breed(parents);
 			}
-			for (int o = 0; o <= nextGeneration.length; o++) {
+			for (int o = 0; o < nextGeneration.length; o++) {
 				mutate(nextGeneration[o]);
 			}
 			generation = nextGeneration;
@@ -110,10 +111,9 @@ public class GeneticAlgorithm implements Runnable {
 	}// end void geneticAlgorithm
 
 	void evaluate(Organism o) {
-		//create robot on different thread with the genes of Organism o
-		while (!Time.getDead()) {
-			o.fitness = Time.getX();
-		}
+		//create robot on different thread with the genes of Organism o	
+		o.fitness = RunAI.runRobot(o);
+		System.out.println("Fitness:  "+o.fitness);
 		//close robot
 	}
 
@@ -143,7 +143,7 @@ public class GeneticAlgorithm implements Runnable {
 	@Override
 	public void run() {
 		// TODO Auto-generated method stub
-		
+		geneticAlgorithm();
 	}
 
 }
