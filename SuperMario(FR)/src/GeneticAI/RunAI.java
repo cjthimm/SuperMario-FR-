@@ -5,7 +5,9 @@ import java.awt.Robot;
 import java.awt.event.KeyEvent;
 
 import GeneticAI.GeneticAlgorithm.Organism;
+import br.ol.smb.infra.Game;
 import br.ol.smb.infra.Time;
+import br.ol.smb.infra.Game.GameState;
 
 public class RunAI {
 
@@ -39,8 +41,9 @@ public class RunAI {
 		//int preorg = 0;
 		try {
 			r = new Robot();
-			r.delay(4000);
+			//r.delay(4000);
 			//r.delay(15000);
+			while(Game.getGameState() != GameState.PLAYING) {r.delay(4000*60/Time.fps);}
 			 while (x) {
 				 
 				 
@@ -49,35 +52,36 @@ public class RunAI {
 				 //if(genes[count][organism] == 0) {
 				 if(genes[count] == 0) {
 					r.keyPress(KeyEvent.VK_RIGHT);
-				 	r.delay(150*60/Time.fps);
+				 	r.delay(250*60/Time.fps);
 					r.keyRelease(KeyEvent.VK_RIGHT);
-					System.out.println("right");
+					System.out.println("right - "+(250*60/Time.fps));
 				}
 				
 				if(genes[count] == 1) {
 					r.keyPress(KeyEvent.VK_RIGHT);
 					r.keyPress(KeyEvent.VK_X);
-					r.delay(250*60/Time.fps);
+					r.delay(350*60/Time.fps);
 					r.keyRelease(KeyEvent.VK_RIGHT);
 					r.keyPress(KeyEvent.VK_X);
-					System.out.println("jump");
+					System.out.println("jump - "+(350*60/Time.fps));
 				}
 				
 				if(genes[count] == 2) {
 					r.keyPress(KeyEvent.VK_X);
-					r.delay(250*60/Time.fps);
+					r.delay(350*60/Time.fps);
 					r.keyRelease(KeyEvent.VK_X);
-					System.out.println("jump");
+					System.out.println("jump - "+(350*60/Time.fps));
 				}
 				
 				if(genes[count] == 3) {
 					r.keyPress(KeyEvent.VK_Z);
-					r.delay(30*60/Time.fps);
+					r.delay(130*60/Time.fps);
 					r.keyRelease(KeyEvent.VK_Z);
-					System.out.println("FireBALL!!");
+					System.out.println("FireBALL!! - "+(130*60/Time.fps));
 				}
 
-				r.delay(100*60/Time.fps);
+				//r.delay(100*60/Time.fps);
+				//System.out.println("r.delay - "+(100*60/Time.fps));
 				count++;
 				fitness = Time.getxAfterDeath();
 				//System.out.println("fitness: "+fitness);
