@@ -37,15 +37,12 @@ public class GeneticAlgorithm {
 
 	public Organism CreateOrganism() {
 		int genes[] = new int[1200];
-		System.out.println("Creating genes");
-		for (int i = 0; i < genes.length; i++) {
-			// do the for in the row according to the column size
-			System.out.println("");
-			System.out.println("Printing the genenome of of the " + i + " organism:");
-
-			genes[i] = ((int) (Math.random() * 4));
-			System.out.print(genes[i]);
+		
+			for (int i = 0; i < genes.length; i++) {
+				genes[i] = ((int) (Math.random() * 4));
+				
 		}
+		System.out.println(Arrays.toString(genes));
 		Organism test = new Organism(new Genotype(genes));
 		return test;
 	}
@@ -56,6 +53,7 @@ public class GeneticAlgorithm {
 			generation[i] = CreateOrganism();
 			// and organism with a randomly generated genotype
 			// randomly generate java.util.random with the about genes array
+			//System.out.println("this is organism" + i );
 		}
 		for (int g = 0; g < maxGenerations; g++) {
 			if (generation[0].fitness >= fitnessThreshold)
@@ -140,5 +138,4 @@ public class GeneticAlgorithm {
 
 	}// end GenAlgo class
 
-	
 }

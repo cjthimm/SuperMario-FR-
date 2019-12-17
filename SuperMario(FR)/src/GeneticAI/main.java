@@ -6,6 +6,7 @@ public class main {
 		// TODO Auto-generated method stub
 		GeneticAlgorithm geneticAlgorithm= new GeneticAlgorithm();
 		geneticAlgorithm.geneticAlgorithm();
+		
 
 	}
 
