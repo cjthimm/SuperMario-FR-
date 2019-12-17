@@ -16,6 +16,9 @@ public class GeneticAlgorithm {
 	class Organism {
 		Genotype genotype;
 		int fitness;
+		public Organism(Genotype genotype) {
+			this.genotype = genotype;
+		}
 	}
 
 	public static class Genotype {
@@ -93,7 +96,8 @@ public class GeneticAlgorithm {
 		}
 	}
 	
-	void evaluate(Organism o) {
+	int evaluate(Organism o) {
+		int fitnessScore = 0;
 		// ******Casey******* I think you said you were going to figure out how to find
 		// this distance?
 		// take the length of the x axis and take that difference and subtract by an
@@ -101,7 +105,7 @@ public class GeneticAlgorithm {
 		// 1000-x of mario to goal
 		// that number is not the fitness score of that organism
 
-		int fitnessScore = evaluate(o);
+		return fitnessScore;
 	}
 
 	Organism breed(Organism[] parents) {
@@ -113,6 +117,7 @@ public class GeneticAlgorithm {
 			genes[i] = parentToInheritFrom.genotype.genes[i];
 		}
 		Genotype genotype= new Genotype(genes);
+		return new Organism(genotype);
 	}
 
 	void mutate(Organism o) {
