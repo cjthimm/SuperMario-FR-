@@ -60,7 +60,7 @@ public class RunAI {
 					r.delay(250*60/Time.fps);
 					r.keyRelease(KeyEvent.VK_RIGHT);
 					r.keyPress(KeyEvent.VK_X);
-					//System.out.println("jump");
+					//System.out.println("jump and right");
 				}
 				
 				if(genes[count] == 2) {
