@@ -14,6 +14,7 @@ public class Time {
 	public static int nextMove;
 	public static boolean startCounter;
 	public static int fps = 60;
+	public static int xAfterDeath;
     //my code
     
     private static int fixedFrames;
@@ -68,6 +69,9 @@ public class Time {
                     nextMove++;
                 	System.out.println("*****Index for next move = "+ nextMove);
                 	System.out.println("X value = "+Actor.getMinX());// 1/4 SECONDS*******
+                	if(Actor.getMinX()>0) {
+                		xAfterDeath = Actor.getMinX();
+                	}
                     if(Mario.marioIsDead()) {
                     	//startCounter = false;
                 		dead = true;
@@ -89,6 +93,9 @@ public class Time {
             return true;
         }
         return false;
+    }
+    public static int getxAfterDeath() {
+    	return xAfterDeath;
     }
     
 }
