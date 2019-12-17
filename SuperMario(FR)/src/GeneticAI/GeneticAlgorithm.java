@@ -25,6 +25,7 @@ public class GeneticAlgorithm {
 			this.genes = genes;
 		}
 		
+		
 	}
 	public static Organism CreateGenes() {
 		int genes[] = new int[1200];
