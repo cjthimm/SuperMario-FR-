@@ -83,7 +83,6 @@ public class GeneticAlgorithm {
 				// copy the array of organism over into parents in order of fitness.sorting
 				// descending
 				generation[i] = parents[i];
-
 			}
 			Organism[] nextGeneration = new Organism[generationSize];
 			for (int i = 0; i <= generationSize; i++) {
