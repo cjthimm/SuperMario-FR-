@@ -39,7 +39,7 @@ public class Game {
     public static final boolean DRAW_DEBUG = false;
     public static final Vec2 GRAVITY = new Vec2(0, 0.5);
     
-    private GameState gameState = GameState.INITIALIZING;
+    private static GameState gameState = GameState.INITIALIZING;
     private Color backgroundColor = Color.BLACK;
     private BitmapFont bitmapFont;
     private SpriteSheet spriteSheet;
@@ -211,7 +211,7 @@ public class Game {
 
     // --- ---
 
-    public GameState getGameState() {
+    public static GameState getGameState() {
         return gameState;
     }
 
