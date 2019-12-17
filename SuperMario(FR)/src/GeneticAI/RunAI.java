@@ -35,11 +35,14 @@ public class RunAI {
 		//genes = GeneGenerator.CreateGenes();
 		int fitness = -1;
 		Robot r;
+		
 		//int preorg = 0;
 		try {
 			r = new Robot();
+			r.delay(4000);
 			//r.delay(15000);
 			 while (x) {
+				 
 				 
 				 System.out.println("Organism #: "+ organism);
 				 
@@ -54,7 +57,7 @@ public class RunAI {
 				if(genes[count] == 1) {
 					r.keyPress(KeyEvent.VK_RIGHT);
 					r.keyPress(KeyEvent.VK_X);
-					r.delay(200);
+					r.delay(250);
 					r.keyRelease(KeyEvent.VK_RIGHT);
 					r.keyPress(KeyEvent.VK_X);
 					System.out.println("jump");
@@ -62,19 +65,19 @@ public class RunAI {
 				
 				if(genes[count] == 2) {
 					r.keyPress(KeyEvent.VK_X);
-					r.delay(150);
+					r.delay(250);
 					r.keyRelease(KeyEvent.VK_X);
 					System.out.println("jump");
 				} 
 				
 				if(genes[count] == 3) {
 					r.keyPress(KeyEvent.VK_Z);
-					r.delay(150);
+					r.delay(30);
 					r.keyRelease(KeyEvent.VK_Z);
 					System.out.println("FireBALL!!");
 				}
 
-				r.delay(250);
+				r.delay(100);
 				count++;
 				fitness = Time.getxAfterDeath();
 				//System.out.println("fitness: "+fitness);
