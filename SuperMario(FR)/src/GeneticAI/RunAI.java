@@ -27,7 +27,7 @@ public class RunAI {
 		x = false;
 	}
 
-
+ 
 	public static int runRobot(Organism o) {
 		int count = 0;
 		x= true;
