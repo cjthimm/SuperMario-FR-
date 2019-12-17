@@ -13,6 +13,8 @@ public class GeneticAlgorithm implements Runnable {
 	int generationSize = 8; // Changed lower temporarily
 	int numberOfParents = 2;
 	double mutationRate = 0.03;
+	int generationCount;
+	int organismCount;
 
 	class Organism {
 		Genotype genotype;
@@ -42,6 +44,8 @@ public class GeneticAlgorithm implements Runnable {
 	}
 
 	void geneticAlgorithm() {
+		generationCount = 1;
+		organismCount = 1;
 		Organism[] generation = new Organism[generationSize];
 		for (int i = 0; i < generationSize; i++) {
 			generation[i] = createOrganism();
@@ -91,12 +95,13 @@ public class GeneticAlgorithm implements Runnable {
 			} catch (FileNotFoundException e) {
 				e.printStackTrace();
 			}
-
+			generationCount++;
 		}
 	}// end void geneticAlgorithm
 
 	void evaluate(Organism o) {
-		System.out.println("Genotype Number: ");
+		System.out.println("Generation: " + generationCount);
+		System.out.println("Organism Number: " + organismCount++);
 		o.fitness = RunAI.runRobot(o);
 		System.out.println("Fitness: " + o.fitness);
 	}
