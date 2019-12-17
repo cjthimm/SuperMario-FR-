@@ -40,11 +40,7 @@ public class RunAI {
 			r = new Robot();
 			//r.delay(15000);
 			 while (x) {
-				 //System.out.println("organism: "+organism + "|| preorg: " + preorg);
-				 //if(preorg < organism)
-					 //r.delay(3000);
 				 
-				 //preorg = organism;
 				 System.out.print(genes[0]);
 				 System.out.print(genes[1]);
 				 System.out.print(genes[2]);
