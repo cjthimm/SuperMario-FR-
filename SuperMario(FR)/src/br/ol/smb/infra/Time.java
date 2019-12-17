@@ -6,7 +6,7 @@ import br.ol.smb.entity.Actor;
 /**
  * Time class.
  * 
- * @author Leonardo Ono (ono.leo@gmail.com)
+ *@author Leonardo Ono (ono.leo@gmail.com)
  */
 public class Time {
 	public static int nextMove;
@@ -63,7 +63,8 @@ public class Time {
             if(startCounter) {
                 if(fixedFrames%15==0) {
                     nextMove++;
-                	//System.out.println("Index for next move = "+ nextMove+"\nX value = "+Actor.getMinX());// 1/4 SECONDS*******
+//<<<<<<< HEAD
+                	System.out.println("Index for next move = "+ nextMove+"\nX value = "+Actor.getMinX());// 1/4 SECONDS*******
                     if(Actor.isDead()) {
                 		dead = true;
                 		xValue = Actor.getMinX();
@@ -71,6 +72,9 @@ public class Time {
                     else{
                     	dead = false;
                     }
+//=======
+                	//System.out.println("Index for next move = "+ nextMove+"\nX value ="+Actor.getMinX());// 1/4 SECONDS*******
+//>>>>>>> branch 'master' of https://github.com/cjthimm/SuperMario-FR-.git
                 }
             }
         }
