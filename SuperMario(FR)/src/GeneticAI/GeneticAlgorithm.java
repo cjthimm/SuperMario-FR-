@@ -1,5 +1,4 @@
 package GeneticAI;
-
 ​import java.util.Random;
 
 public class GeneticAlgorithm {
@@ -18,36 +17,61 @@ public class GeneticAlgorithm {
 		int fitness;
 	}
 	
-	class Genotype{
-		char[] genes;
-		//array of the four commands to make mario move
-		/////********Tanner********
-		//we also need a constructor for genes to make a radom genotype down on line 74
+	public static class Genotype{
+		public static Organism CreateGenes(){
+			int values[][] = new int[20][1200];
+			System.out.println("Creating genes");
+		    for (int i = 0; i < values.length; i++) {
+		        // do the for in the row according to the column size
+		    	System.out.println("");
+				System.out.println("Printing the genenome of of the "+i+" organism:");
+		        for (int j = 0; j < values[i].length; j++) {
+		            // multiple the random by 10 and then cast to in
+		            values[i][j] = ((int) (Math.random() * 4));
+		            System.out.print(values[i][j]);
+		        }
+		    }
+		}	
 	}
 	
 	void geneticAlgorithm() {
 		Organism[] generation= new Organism[generationSize];
 		for(int i=0; i<=generationSize;i++) {
-			generation[i]=new Genotype[];//and organism with a randomly generated genotype
+			generation[i]= Genotype.CreateGenes();
+			//and organism with a randomly generated genotype
 			//randomly generate java.util.random with the about genes array
 		}
 		for(int g=0; g<=maxGenerations;g++) {
 			if(generation[0].fitness >= fitnessThreshold)
 				break;
 			for(int o; o<=generation.length; o++) {
-				evaluate(o);//how do you evalute
 				//******Casey******* I think you said you were going to figure out how to find this distance?
 				//take the length of the x axis and take that difference and subtract by an arbitrarily large number
 				//1000-x of mario to goal
 				//that number is not the fitness score of that organism
-				//sort the organism array from most fit to least(descening order)
+				
+				int fitnessScore= evaluate(o);
+				for(int i=0; i<generation.length;i++) {
+					Organism a= generation[i];
+					Organism b= generation[i+1];
+					//swap if the organism a is smaller than b so that it will be largest to smallest
+					//obviously we cant compare the Organisms we need to give them fitness score then compare
+					if(a<b) {
+						Organism temp;
+						temp=a;
+						a=b;
+						b=temp;
+					}
+				}
+				
 			}
+			
 			Organism[] parents= new Organism[numberOfParents];
 			//size of numberOfParents
 			
 			for(int i=0; i<numberOfParents;i++) {
 				//copy the array of organism over into parents in order of fitness.sorting descending
-				Organism[i]=parents[i];
+				generation[i]=parents[i];
 				
 			}
 			Organism[] nextGeneration= new Organism[generationSize];
@@ -80,11 +104,13 @@ public class GeneticAlgorithm {
 		for(int i=0; i<=genotypeSize; i++) {
 			if(Math.random()< mutationRate) {
 				//o.genotype.genes[i]= random genes so like up down left rights;
+				o.genotype.genes[i]=
 			}
 				
 		}
 	}
+	
 		
 
-​
+
 }//end GenAlgo class
