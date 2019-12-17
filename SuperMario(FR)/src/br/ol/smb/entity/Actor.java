@@ -25,11 +25,15 @@ public class Actor extends Entity {
     protected double gravityScale = 1;
     protected Camera camera;
     protected Tilemap tilemap;
-    protected int minX;
+    /*protected*/ public static int minX;
     protected double dyingTime;
     protected LastDirection lastDirection = LastDirection.RIGHT;
     protected boolean flipSpriteAccordingToDirection = true;
     public Actor() {
+    }
+    
+    public static int getMinX() {
+    	return minX;
     }
     
     public Actor(Game game) {
