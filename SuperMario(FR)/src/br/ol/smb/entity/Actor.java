@@ -19,13 +19,13 @@ public class Actor extends Entity {
 
     public static enum ActorState { APPEARING, ALIVE, DYING, DEAD };
     public static enum LastDirection { LEFT, RIGHT };
-    private static ActorState actorState = ActorState.ALIVE;
+    private ActorState actorState = ActorState.ALIVE;
     protected double restitution = 0;
     protected boolean affectedByGravity = true;
     protected double gravityScale = 1;
     protected Camera camera;
     protected Tilemap tilemap;
-    /*protected*/ public static int minX;
+    protected static int minX;
     protected double dyingTime;
     protected LastDirection lastDirection = LastDirection.RIGHT;
     protected boolean flipSpriteAccordingToDirection = true;
@@ -300,7 +300,7 @@ public class Actor extends Entity {
         rigid = false;
     }
     
-    public static boolean isDead() {
+    public boolean isDead() {
         return actorState != ActorState.ALIVE;
     }
 

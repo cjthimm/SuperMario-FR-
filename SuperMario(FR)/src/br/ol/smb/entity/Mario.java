@@ -48,6 +48,7 @@ public class Mario extends Actor {
     private double fireMarioStartTime;
     private double transformationFrame;
     private double transformationVelocity;
+    public static boolean marioDead;
     
     // fireball cache
     private List<Fireball> fireballs = new ArrayList<Fireball>();
@@ -494,7 +495,7 @@ public class Mario extends Actor {
     }
     
     @Override
-    protected void updateDead() {
+    protected void updateDead() {//********************************************************************
         if (Time.getCurrentTime() - deadTime < 3) {
             return;
         }
@@ -578,6 +579,7 @@ public class Mario extends Actor {
     @Override
     public void kill() {
         if (isDead()) {
+        	marioDead = true;
             return;
         }
         setActorState(ActorState.DYING);
@@ -752,9 +754,12 @@ public class Mario extends Actor {
     @Override
     protected void onActorStateChanged(ActorState newState) {
         if (newState == ActorState.DEAD) {
+        	//*********************************************************************
+        	marioDead = true;
             deadTime = Time.getCurrentTime();
         }
     }
+    
     
     @Override
     public void onGameStateChanged(Game.GameState newGameState) {
@@ -797,5 +802,9 @@ public class Mario extends Actor {
                 break;
         }
     }
+
+	public static boolean marioIsDead() {
+		return marioDead;
+	}
 
 }
