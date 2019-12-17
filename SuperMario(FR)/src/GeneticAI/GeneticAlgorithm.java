@@ -44,8 +44,8 @@ public class GeneticAlgorithm implements Runnable {
 	}
 
 	void geneticAlgorithm() {
-		generationCount = 1;
-		organismCount = 1;
+		generationCount = 0;
+		organismCount = 0;
 		Organism[] generation = new Organism[generationSize];
 		for (int i = 0; i < generationSize; i++) {
 			generation[i] = createOrganism();
@@ -101,7 +101,7 @@ public class GeneticAlgorithm implements Runnable {
 
 	void evaluate(Organism o) {
 		System.out.println("Generation: " + generationCount);
-		System.out.println("Organism Number: " + organismCount++);
+		System.out.println("Genome Number: " + (organismCount++%generationSize));
 		o.fitness = RunAI.runRobot(o);
 		System.out.println("Fitness: " + o.fitness);
 		System.out.println("***************************");
