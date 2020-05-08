@@ -10,11 +10,12 @@ public class GeneticAlgorithm implements Runnable {
 	int genotypeSize = 1200;
 	int maxGenerations = 1000;
 	int fitnessThreshold = 3043;
-	int generationSize = 8; // Changed lower temporarily
+	int generationSize = 6; // Changed lower temporarily
 	int numberOfParents = 2;
-	double mutationRate = 0.03;
+	double mutationRate = 0.05;
 	int generationCount;
 	int organismCount;
+	int avgGenFitness;
 
 	class Organism {
 		Genotype genotype;
@@ -72,6 +73,13 @@ public class GeneticAlgorithm implements Runnable {
 				evaluate(generation[o]);
 			}
 			generation = selectionSort(generation, generationSize);
+			// calculate average generation fitness
+			avgGenFitness = 0;
+			for(int i = 0; i < generationSize; i++) {
+				avgGenFitness += generation[i].fitness;
+			}
+			System.out.println("Average Fitness of Generation " + generationCount + ": " + (avgGenFitness/generationSize));
+			
 			// selection
 			Organism[] parents = new Organism[numberOfParents];
 
@@ -81,10 +89,13 @@ public class GeneticAlgorithm implements Runnable {
 				parents[i] = generation[i];
 			}
 			Organism[] nextGeneration = new Organism[generationSize];
-			for (int i = 0; i < generationSize; i++) {
+			for (int i = 0; i < numberOfParents; i++) {
+				nextGeneration[i] = parents[i];
+			}
+			for (int i = numberOfParents; i < generationSize; i++) {
 				nextGeneration[i] = breed(parents);
 			}
-			for (int o = 0; o < nextGeneration.length; o++) {
+			for (int o = numberOfParents; o < nextGeneration.length; o++) {
 				mutate(nextGeneration[o]);
 			}
 			generation = nextGeneration;
